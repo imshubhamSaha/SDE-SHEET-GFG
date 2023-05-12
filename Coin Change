@@ -1,0 +1,14 @@
+function count(sum,coins,n){
+    const dp = new Array(sum+1).fill(0);
+    dp[0] = 1
+    for(let i=0; i<n; i++){
+        
+        for(let j= coins[i]; j<dp.length; j++){
+            dp[j] += dp[j-coins[i]]
+        }
+    }
+   
+    return dp[sum]
+}
+
+console.log(count(10,[2,5,3,6], 4))
