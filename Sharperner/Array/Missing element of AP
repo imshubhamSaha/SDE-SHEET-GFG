@@ -1,0 +1,57 @@
+//User function Template for javascript
+
+/**
+ * @param {number[]} arr
+ * @param {number} n
+ * @return {number}
+*/
+
+class Solution {
+    findMissing(arr,n){
+       //code here
+       const start = arr[0];
+       const last = arr[n-1]; 
+       const actualSum = (n+1)/2 * (start + last);
+       
+       const presentSum = arr.reduce((cur, acc) => cur + acc, 0);
+       
+       return actualSum - presentSum;
+       
+       
+    }
+}
+
+Time Complexity -> O(N)
+Space Complexity -> O(1)
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class Solution {
+    findMissing(arr,n){
+       //code here
+       const first = arr[0];
+       const last = arr[n-1];
+       
+       const diff = parseInt((last-first)/n, 10);
+       
+       let low = 0;
+       let high = n-1;
+       
+       while(low<=high){
+           let mid = low + Math.floor((high-low)/2);
+           
+           if((arr[mid] - arr[mid-1])>diff){
+               return arr[mid-1] + diff;
+           }
+           else if((arr[0] + (mid * diff)) === arr[mid]){
+               low = mid+1;
+           }else high = mid-1
+       }
+       
+    }
+}
+
+
+Time Complexity -> O(Log N)
+Space Complexity -> O(1)
