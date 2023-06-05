@@ -1,0 +1,31 @@
+class Solution{
+    rearrange(arr,n){
+        const pos = [];
+        const neg = [];
+        
+        for(let i=0; i<n; i++){
+            if(arr[i] >= 0) {
+                pos.push(arr[i])
+            }
+            else {
+                neg.push(arr[i]);
+            }
+        }
+        
+        
+        let i=0;
+        let j=0;
+        let k= 0;
+        
+        while (i<pos.length && j<neg.length){
+            arr[k++] = pos[i++];
+            arr[k++] = neg[j++];
+        }
+        
+        while(i<pos.length) arr[k++] = pos[i++];
+        
+        while(j<neg.length) arr[k++] = neg[j++];
+        
+        return arr
+    }
+}
