@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} arr
+ * @param {number} d
+ * @param {number} n
+ */
+ 
+class Solution {
+    //Function to rotate an array by d elements in counter-clockwise direction. 
+    swap(start, end, arr) {
+        while(start < end) {
+            [arr[start], arr[end]] = [arr[end], arr[start]];
+            start++;
+            end--;
+        };
+    }
+    
+    rotateArr(arr, d, n){
+        d= d % n;
+        
+        this.swap(0, n-1, arr);
+        this.swap(0,n-1-d, arr);
+        this.swap(n-d, n-1, arr);
+    }
+}
