@@ -1,0 +1,34 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var checkValidString = function(s) {
+    const len = s.length;
+    const leftPar = [];
+    const star = [];
+
+    for(let i=0; i<len; i++){
+        if(s[i] === '(') {
+            leftPar.push(i);
+        }else if(s[i] === "*") {
+            star.push(i);
+        }else {
+            if(!leftPar.length && !star.length) {
+                return false;
+            }else if(leftPar.length) {
+                leftPar.pop();
+            }else {
+                star.pop();
+            }
+        }
+    }
+
+    while(leftPar.length && star.length) {
+        if(leftPar.pop() > star.pop()) {
+            return false;
+        }
+    }
+
+
+    return leftPar.length === 0;
+};
