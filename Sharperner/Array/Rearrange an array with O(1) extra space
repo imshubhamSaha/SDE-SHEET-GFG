@@ -1,0 +1,23 @@
+
+/**
+ * @param {number[]} arr
+ * @param {number} n
+ */
+ 
+class Solution {
+    
+    //Function to rearrange an array so that arr[i] becomes arr[arr[i]]
+    //with O(1) extra space.
+    arrange(arr, n){
+        for(let i=0; i<n; i++){
+            arr[i] += (arr[arr[i]])%n * n;
+        }
+        
+        for(let i=0; i<n; i++) {
+            arr[i] = parseInt(arr[i]/n);
+        }
+    }
+}
+
+Space Complexity -> O(1);
+Time Complexity -> O(N);
