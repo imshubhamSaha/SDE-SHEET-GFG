@@ -1,0 +1,33 @@
+class Solution{
+    
+    swap(i,j,arr) {
+        [arr[i], arr[j]] = [arr[j] , arr[i]]
+        return arr  
+    }
+    
+    segregateElements(arr,n){
+      const stack = [];
+      
+      let j=0;
+      
+      for( let i=0; i<n; i++) {
+          if(arr[i] >=0) {
+              this.swap(i,j,arr);
+              j++
+          }else {
+              stack.push(arr[i])
+          }
+      }
+      
+      
+      let c = n-1;
+      
+      while(stack.length > 0) {
+          arr[c--] = stack.pop()
+      }
+    }
+}
+
+
+Time Complexity -> O(N);
+Space Complexity -> O(N);
