@@ -1,0 +1,25 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLastWord = function(s) {
+    let i = s.length-1;
+    let j= s.length-1;
+
+    while(i>=0 && i !== " ") {
+        if(i===j) {
+            if(s[i] === " ") {
+                i--;
+                j--;
+            }else {
+                i--;
+            }
+        }else if(s[i] === " ") {
+            return j-i
+        }else {
+            i--;
+        }
+    }
+
+    return Math.abs(j-i)
+};
