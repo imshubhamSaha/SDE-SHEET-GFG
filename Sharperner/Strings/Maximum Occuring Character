@@ -1,0 +1,26 @@
+/**
+ * @param {string} str
+ * @returns {string}
+*/
+class Solution 
+{
+    //Function to find the maximum occurring character in a string.
+    getMaxOccuringChar(str)
+    {
+        const charArr = new Array(26).fill(0);
+        
+        let highest = -1;
+        
+        for(const char of str) {
+            let chCode = char.charCodeAt(0) - 97;
+            charArr[chCode]++;
+            highest = Math.max(highest, charArr[chCode]);
+        }
+        
+        for(const [idx,val] of charArr.entries()) {
+            if(val === highest) {
+                return String.fromCharCode(idx+97)
+            }
+        }
+    }
+}
