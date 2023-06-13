@@ -1,0 +1,30 @@
+const smallestSubstring = function(s) {
+    
+    let zero = -1, one = -1, two = -1;
+    
+    let min = -1, max = -1, ans = Infinity
+    
+    for(let i=0; i<s.length; i++) {
+        if(s[i] == "0") {
+            zero = i;
+        }
+        if(s[i] === "1") {
+            one = i;
+        }
+        if(s[i] ==="2") {
+            two = i
+        }
+        
+        if(one !== -1 && zero !== -1 && two !== -1) {
+            min = Math.min(zero, Math.min(one,two));
+            max = Math.max(zero, Math.max(one,two));
+            ans = Math.min(ans, (max-min)+1);
+            
+        }
+    }
+    
+    if(ans !== Infinity) {
+        return ans;
+    }
+    return -1
+}
