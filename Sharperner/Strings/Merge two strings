@@ -1,0 +1,18 @@
+const merge = function( S1, S2) {
+    
+    const m= S1.length, n= S2.length;
+    let i=0;
+    let j=0;
+    let ans = "";
+    
+    while(i<m || j<n) {
+        let ch1 = i<m ? S1[i] : "";
+        let ch2 = j<n ? S2[j] : "";
+        
+        ans += ch1 + ch2;
+        i++;
+        j++;
+    } 
+    
+    return ans;
+}
