@@ -1,0 +1,17 @@
+const unvisitedLeaves = function( N,  leaves,  frogs) {
+    const visitedArr = new Array(leaves +1).fill(false);
+    
+    for(const frog of frogs) {
+        for(let i=frog; i<=leaves; i += frog) {
+            visitedArr[i] = true;
+        }
+    }
+    
+    for(let i=1; i<=leaves; i++) {
+        if(visitedArr[i] === false) {
+            return i;
+        }
+    }
+    
+    return 0;
+}
