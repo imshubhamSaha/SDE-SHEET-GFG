@@ -1,0 +1,56 @@
+const swap = function(i,j, arr) {
+    [arr[i], arr[j]] = [arr[j], arr[i]]
+    
+    return arr;
+}
+
+const Rearrange= function( arr,  n){
+    let i=0 ,j =0;
+    while(i<n) {
+        
+        if(arr[i] >=0) {
+            i++;
+        }else{
+            for(let k=i; k>j; k--) {
+                swap(i,j,arr);
+            }
+            i++;
+            j++
+        }
+    }
+}
+
+Time Complexity --> O(N * window)
+Space Complexity --> O(1);
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------ALTERNATE WAY-------------------------------------------------------------------------------------
+const arr = [-3,3,-2,2], n = 4
+const swap = function(i,j, arr) {
+    [arr[i], arr[j]] = [arr[j], arr[i]]
+    
+    return arr;
+}
+
+const Rearrange= function( arr,  n){
+   const stack = [];
+   let j=0;
+   for(let i=0; i<n; i++) {
+       if(arr[i] < 0) {
+           swap(i,j,arr);
+           j++
+       }else {
+           stack.push(arr[i])
+       }
+   }
+   
+   let c = n-1
+   while(stack.length) {
+       arr[c--] = stack.pop()
+   }
+}
+
+Time Complexity -->O(N);
+Space Complexity --> O(N);
+
