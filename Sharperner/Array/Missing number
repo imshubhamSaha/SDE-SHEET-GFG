@@ -1,0 +1,9 @@
+const missingNumber= (arr, N) => {
+    
+    const missingNum = arr.reduce((acc,cur,i) => acc^cur^(i+1), 0)
+    
+   return missingNum^N;
+} 
+
+Time Complexity --> O(N);
+Space Complexity --> O(1);
