@@ -1,0 +1,30 @@
+/**
+ * @param {number[]} a
+ * @param {number} n
+ * @returns {number}
+*/
+
+class Solution {
+    // Function to find equilibrium point in the array.
+    equilibriumPoint(a, n)
+    {
+        let totalSum =  a.reduce((acc, cur) => acc + cur, 0);
+        
+        let leftSum = 0
+        
+        for(const [idx, val] of a.entries()) {
+            leftSum += val
+            
+            if(totalSum === leftSum) {
+                return idx +1;
+            }
+            
+            totalSum -= val;
+        }
+        
+        return -1
+    }
+}
+
+Time Complexity --> O(N);
+Space Complexity --> O(1);
