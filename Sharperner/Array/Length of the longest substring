@@ -1,0 +1,33 @@
+
+/**
+ * @param {string} str
+ * @returns {number}
+ */
+
+class Solution {
+    longestUniqueSubsttr(str){
+        const charArr = new Array(26).fill(0);
+        const n = str.length;
+        let j=0,i=0;
+        let maxLen=0;
+        while(j<n) {
+            let char = str.charCodeAt(j) - 97;
+            charArr[char]++;
+            
+            if(charArr[char] == 1){
+                maxLen = Math.max(maxLen,j-i+1);
+                j++;
+            }
+            else{
+                while(charArr[char] >1){
+                    let ch = str.charCodeAt(i) -97;
+                    charArr[ch]--
+                    i++;
+                }
+                maxLen = Math.max(maxLen,j-i+1);
+                j++;
+            }
+        }
+        return maxLen;
+    }
+}
