@@ -1,0 +1,117 @@
+
+const rearrange = function( str) {
+    const vow = [];
+    const cons = [];
+    const vowSet = new Set(["a","e","i","o","u"])
+    
+    let vowCount = 0;
+    let consCount = 0;
+    
+    for(let i=0; i<str.length; i++) {
+        if(vowSet.has(str[i])) {
+            vowCount++;
+            vow.push(str[i])
+        }else{
+            cons.push(str[i]);
+            consCount++;
+        }
+    }
+    
+    if(Math.abs(vowCount-consCount) !== 1) return -1;
+    
+    vow.sort();
+    cons.sort();
+    
+    let result = "";
+    
+    let i=0
+    
+    while(i<=Math.max(vowCount,consCount)) {
+        let v = vow[i] || "";
+        let c = cons[i] || "";
+        
+        result += v+c;
+        i++;
+    }
+    
+    return result;
+}
+
+Time Complexity --> O(N LogN);
+Space Complexity --> O(N)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------ALTERNATE WAY----------------------------------------------------------------------------
+
+const isVowel = function(s) {
+    if(s === "a" || s==="e" || s=== "i" || s=== "o" || s==="u") {
+        return true;
+    }   
+    return false;
+}
+
+const getIdx = function(itr=0,arr){
+    while(itr <26 && arr[itr] === 0) {
+       itr++;
+    }
+    return itr;
+}
+
+const getString = function(vows, cons, vCount, cCount, first){
+    let itr1 = getIdx(0, vows);
+    let itr2 =getIdx(0,cons);
+    let result = "";
+   
+    let flag = first === "vowel" ? 1 : 0;
+   
+    while(vCount>0 || cCount>0) {
+        let ch;
+        if(flag) {
+            ch = String.fromCharCode(itr1 + 97); 
+            vows[itr1]--;
+            vCount--;
+            itr1 = getIdx(itr1, vows)
+            if(cCount) flag =0
+        }else{
+            ch = String.fromCharCode(itr2 + 97);
+           
+            cons[itr2]--;
+            cCount--;
+            itr2 = getIdx(itr2, cons);
+            if(vCount) flag =1;
+        }
+            result += ch;
+   }
+   
+   return result;
+}
+
+const rearrange = function(str) {
+    const n = str.length;
+    const vows = new Array(26).fill(0);
+    const cons = new Array(26).fill(0);
+       
+    let vCount =0, cCount=0;
+       
+    for(let i=0; i<n; i++) {
+        if(isVowel(str[i])) {
+              vCount++;
+              vows[str.charCodeAt(i) -97]++;
+        }else {
+              cCount++;
+              cons[str.charCodeAt(i) -97]++;
+        }
+    }
+      
+    if(Math.abs((vCount-cCount))>1) return -1;
+       
+    if (vCount>=cCount ) {
+        return getString(vows,cons,vCount, cCount, "vowel")
+    }else{
+        return getString(vows, cons,vCount, cCount, "constant")
+    }
+}
+
+
+Time Complexity --> O(N);
+Space Complexity --> O(2*26);
