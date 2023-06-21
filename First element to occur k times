@@ -1,0 +1,30 @@
+
+/**
+ * @param {number[]} arr
+ * @param {number} n
+ * @param {number} k
+ * @returns {number}
+*/
+
+class Solution{
+    firstElementKTime(arr,n,k){
+        const map = new Map();
+        
+        for(let i=0; i< n; i++) {
+            if(map.has(arr[i])) {
+                map.set(arr[i], map.get(arr[i])+1);
+            }else{
+                map.set(arr[i], 1);
+            }
+            
+            if(map.get(arr[i]) === k) {
+                return arr[i];
+            }
+        }
+        
+        return -1;
+    }
+}
+
+Time Complexity --> O(N);
+Space Complexity -->O(N);
