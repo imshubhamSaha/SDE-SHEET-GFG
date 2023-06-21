@@ -1,0 +1,32 @@
+/**
+ * @param {number[]} arr
+ * @param {number} n
+ * @param {number} k
+ */
+ 
+class Solution {
+    reverse(arr,i,j) {
+        while(i<j) {
+            [arr[i], arr[j]] = [arr[j], arr[i]]
+            i++;
+            j--;
+        }
+        
+        return arr;
+    }
+    //Function to reverse every sub-array group of size k.
+    reverseInGroups(arr, n, k){
+        if(k>=n) {
+            return this.reverse(arr, 0,n-1)
+        }else{
+            for(let i=0; i<n; i += k) {
+                if((n-i)>=k){
+                    this.reverse(arr, i, i+k-1)
+                }else{
+                    this.reverse(arr,i,n-1);
+                }
+            }
+        }
+    }
+}
+/*
