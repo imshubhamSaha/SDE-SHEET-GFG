@@ -1,0 +1,27 @@
+/**
+* @param number n
+* @param number k
+* @param number[] candies
+
+* @returns number[]
+*/
+    candyStore(n, k, candies) {
+        const ans = []
+        candies.sort((a,b) => a-b);
+        
+        let min = candies[0];
+        let max = candies[n-1];
+        
+        for(let i=1; i<n-k; i++){
+            min += candies[i];
+        }
+        ans.push(min)
+        for(let i= n-2; i>k; i--) {
+            max += candies[i]
+        }
+        ans.push(max)
+        return ans
+    }
+    
+    
+}
