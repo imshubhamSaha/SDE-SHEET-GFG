@@ -1,0 +1,6 @@
+function findMax(N) {
+    arr= N.split("");
+    arr.sort((a,b) => b-a);
+    return arr.join("")
+        
+}
