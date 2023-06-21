@@ -1,0 +1,39 @@
+
+/**
+ * @param {number[]} arr
+ * @param {number} n
+ * @returns {number}
+*/
+
+class Solution {
+    // Function to find the trapped water between the blocks.
+    trappingWater(arr, n)
+    {
+       const left = new Array(n).fill(0)
+       const right = new Array(n).fill(0)
+       
+       let max = -1;
+       for(let i=0; i<n; i++){
+           max = Math.max(max, arr[i])
+           left[i] =max;
+       }
+       max = arr[n-1];
+       for(let i=n-1; i>=0; i--) {
+           max = Math.max(max, arr[i])
+           right[i] = max;
+       }
+       
+       let totalWater = 0
+       max;
+       
+       for(let i=0; i<n; i++) {
+           totalWater += Math.min(left[i], right[i]) - arr[i]
+       }
+       
+       return totalWater;
+       
+    }
+}
+
+Time Complexity --> O(N);
+Space Complexity --> O(2N);
