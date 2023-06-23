@@ -1,0 +1,59 @@
+/**
+ * @param {number[]} arr
+ * @param {number} n
+ * @returns {number} 
+ */
+ 
+class Solution {
+    maxArea(arr, n){
+        let res = 0;
+        for(let i=0; i<n-1; i++) {
+            for(let j=i+1; j<n; j++) {
+                let area = (j-1) * Math.min(arr[i], arr[j])
+                
+                res = Math.max(res, area);
+            }
+        }
+        return res;
+    }
+}
+
+Time Complexity --> O(N**2);
+Space Complexity --> O(1);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------Alternate Way-----------------------------------------------------------------------------------
+
+/**
+ * @param {number[]} arr
+ * @param {number} n
+ * @returns {number} 
+ */
+ 
+class Solution {
+    maxArea(arr, n){
+        let maxArea = 0;
+        
+        let left=0;
+        let right = n-1;
+        
+        while(left < right) {
+            let area = (right-left) * Math.min(arr[left], arr[right]);
+            
+            maxArea = Math.max(area, maxArea);
+            
+            if(arr[left] < arr[right]) {
+                left++;
+            }else {
+                right--;
+            }
+        }
+        
+        
+        return maxArea;
+        
+    }
+}
+
+Time Complexity --> O(N);
+Space Complexity --> O(1);
