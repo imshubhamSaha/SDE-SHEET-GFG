@@ -1,0 +1,59 @@
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var removeNodes = function(head) {
+   const stack = [];
+  while (head) {
+    while (stack.length && head.val > stack[stack.length - 1]) {
+      stack.pop();
+    }
+    stack.push(head.val);
+    head = head.next;
+  }
+  while (stack.length) {
+    head = new ListNode(stack.pop(), head);
+  }
+  return head;
+};
+
+Time Complexity --> O(N);
+Space Complexity --> O(N);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------Alternate Way-----------------------------------------------------------------------------
+
+const reversed = function(head) {
+    let cur = head;
+    let prev = null;
+
+    while(cur) {
+        let nextnode = cur.next;
+        cur.next = prev;
+        prev = cur
+
+        cur = nextnode;
+    }
+
+    return prev;
+}
+var removeNodes = function(head) {
+    
+    let cur = reversed(head);
+    head = cur
+    while(cur){
+        if(cur.next && cur.val > cur.next.val){
+            cur.next = cur.next.next;
+        }else{
+            cur = cur.next;
+        }
+
+    }
+
+    return reversed(head)
+    
+};
+
+
+Time Complexity --> O(N);
+Space Complexity --> O(1);
