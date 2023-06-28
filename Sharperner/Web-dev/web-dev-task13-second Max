@@ -1,0 +1,20 @@
+const secondmax  = (arr) =>  {
+    let large = arr[0]
+    
+    for(let i=0; i< arr.length; i++) {
+        large = Math.max(large, arr[i])
+    }
+    
+    let secMax = Number.MIN_SAFE_INTEGER
+    
+    for(let i=0; i<arr.length; i++) {
+        if(arr[i] !== large && arr[i] > secMax) {
+            secMax = arr[i]
+        }
+    }
+    
+    return secMax
+}
+
+Time Complexity --> O(N);
+Space Complexity -->O(1);
