@@ -1,0 +1,10 @@
+const minVal = (arr) => arr.reduce((acc, cur) => {
+    if(acc <= cur) {
+        return acc
+    }
+    else return cur
+}, arr[0])
+
+
+Time Complexity -- > O(N);
+Space Complexity -->O(1)
