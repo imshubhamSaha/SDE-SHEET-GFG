@@ -1,0 +1,32 @@
+
+/**
+ * @param {string} s
+ * @returns {number}
+*/
+
+class Solution{
+    isRepeat(s){
+        //code here
+        
+        for(let i=0; i<Math.floor(s.length/2); i++) {
+            let str =s.substring(0, i+1);
+            let matched = true;
+            for(let j=i+1; j<s.length; j += str.length) {
+                let str2 = s.substring(j, (i+j)+1);
+                if(str !==  str2) {
+                    matched = false;
+                    break;
+                }
+            }
+            
+            if(matched) {
+                return 1
+            }
+        }
+        
+        return 0;
+    }
+}
+
+Time Complexity --> O(logN * N);
+Space Complexity --> O(1);
