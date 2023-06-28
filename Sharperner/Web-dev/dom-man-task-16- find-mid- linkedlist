@@ -1,0 +1,20 @@
+var findMiddleElement = function(head) {
+   
+	// return the middle node of the linked list
+	 let len = 0;
+	 let temp = head;
+	 
+	 while(temp ){
+	     len++;
+	     temp = temp.next;
+	 }
+	 
+	 temp = head;
+	 let traverse = Math.floor(len/2)
+	 let i =0;
+	 while(i<traverse) {
+	     temp = temp.next;
+	 }
+	 
+	 return temp;
+};
