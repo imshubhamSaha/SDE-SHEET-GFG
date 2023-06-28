@@ -1,0 +1,15 @@
+var findSumOfOddElements = function(head) {
+    let oddSum = 0;
+    let temp = head;
+    
+    while(temp) {
+       
+        if((temp.val) % 2  !== 0) {
+            console.log(temp.val)
+            oddSum += temp.val
+        }
+        
+        temp = temp.next;
+    }
+    return oddSum;
+};
