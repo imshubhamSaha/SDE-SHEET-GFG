@@ -1,0 +1,94 @@
+const count = function (str, ch) {
+  return str.split("").filter((char) => char === ch).length;
+};
+
+//Using Bubble Sort
+var AAA_sort = function (sentences, cb) {
+  const n = sentences.length;
+  //   const numArr = sentences.map((sen) => cb(sen, "a"));
+
+  for (let i = 0; i < n - 1; i++) {
+    let swapped = false;
+    for (let j = 0; j < n - 1 - i; j++) {
+      if (cb(sentences[j], "a") < cb(sentences[j + 1], "a")) {
+        [sentences[j], sentences[j + 1]] = [sentences[j + 1], sentences[j]];
+        swapped = true;
+      } else if (cb(sentences[j], "a") === cb(sentences[j + 1], "a")) {
+        if (sentences[j].length < sentences[j + 1].length) {
+          [sentences[j], sentences[j + 1]] = [sentences[j + 1], sentences[j]];
+          swapped = true;
+        }
+      }
+    }
+
+    if (!swapped) {
+      break;
+    }
+  }
+
+  return sentences;
+};
+
+
+//Using Insertion sort
+
+var AAA_sort = function (sentences, cb) {
+  const n = sentences.length;
+
+  let i = 1;
+
+  while (i < n) {
+    let tem = cb(sentences[i], "a");
+    let ch = sentences[i];
+    let j = i - 1;
+    while (j >= 0) {
+      let sen = cb(sentences[j], "a");
+      if (sen < tem) {
+        sentences[j + 1] = sentences[j];
+      } else if (sen === tem) {
+        if (sentences[j].length < sentences[j + 1].length) {
+          sentences[j + 1] = sentences[j];
+        }
+      } else {
+        break;
+      }
+      j--;
+    }
+
+    sentences[j + 1] = ch;
+    i++;
+  }
+
+  return sentences;
+};
+
+
+//Using selection sort
+
+
+var AAA_sort = function (sentences, cb) {
+  const n = sentences.length;
+
+  for (let i = 0; i < n - 1; i++) {
+    let maxIdx = i;
+    let max = cb(sentences[maxIdx], "a");
+
+    for (let j = i + 1; j < n; j++) {
+      let sen = cb(sentences[j], "a");
+
+      if (sen > max) {
+        maxIdx = j;
+        max = sen;
+      } else if (sen === max) {
+        if (sentences[maxIdx].length < sentences[j].length) {
+          maxIdx = j;
+        }
+      }
+    }
+
+    let temp = sentences[i];
+    sentences[i] = sentences[maxIdx];
+    sentences[maxIdx] = temp;
+  }
+  return sentences;
+};
