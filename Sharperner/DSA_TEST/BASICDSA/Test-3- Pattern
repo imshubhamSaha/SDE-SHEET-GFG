@@ -1,0 +1,25 @@
+function print_pattern() {
+  /* Function to print the pattern */
+  let str = "";
+  let col = 0;
+
+  while (col < 5) {
+    for (let row = 0; row < 5 - col; row++) {
+      str += "*";
+    }
+
+    for (let space = 0; space < 2 * col; space++) {
+      str += " ";
+    }
+
+    for (let row = 0; row < 5 - col; row++) {
+      str += "*";
+    }
+
+    str += "\n";
+
+    col++;
+  }
+
+  console.log(str);
+}
