@@ -1,0 +1,30 @@
+class Queue {
+  constructor(queue) {
+    this.queue = queue;
+    this.minpos = 0;
+    this.maxpos = queue.length - 1;
+  }
+
+  pushIntoQueue(value) {
+    // Complete this function
+    // Push the value into the queue
+    this.maxpos += 1;
+    this.queue[this.maxpos] = value;
+  }
+
+  popFromQueue() {
+    // Complete this function
+    //return the elements based on FIFO logic
+    //When no elements remain to return , return -1
+    if (this.minpos < this.maxpos) {
+      return this.queue[this.minpos++];
+    } else if (this.minpos === this.maxpos) {
+      let poped = this.queue[this.minpos];
+      this.minpos = 0;
+      this.maxpos = -1;
+      return poped;
+    } else {
+      return -1;
+    }
+  }
+}
