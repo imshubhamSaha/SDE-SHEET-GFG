@@ -1,0 +1,26 @@
+function sharpees(n) {
+  /* Function to store first n sharpees in an array
+    Return the array containing the sharpees numbers */
+    const arr = [];
+    let count = 0;
+    let i = 5;
+
+    while (count < n) {
+        let num = i;
+        let sum = 0;
+        while (num > 0) {
+        sum += num % 10;
+        num = Math.floor(num / 10);
+        }
+
+        if (sum % 5 === 0) {
+        arr.push(i);
+        count++;
+        }
+
+        i++;
+    }
+
+
+    return arr;
+}
