@@ -1,0 +1,32 @@
+const findMajor = function (arr) {
+  let count = 0;
+  let maj = -1;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (count === 0) {
+      maj = arr[i];
+      count++;
+    } else {
+      if (arr[i] === maj) {
+        count++;
+      } else {
+        count--;
+      }
+    }
+  }
+
+  return maj;
+};
+
+const isMajority = function (arr, candidate) {
+  let count = arr.filter((num) => num === candidate).length;
+
+  if (count > arr.length / 2) return true;
+  return false;
+};
+
+var findMajority = function (arr) {
+  let candidate = findMajor(arr);
+  if (isMajority(arr, candidate)) return candidate;
+  else return "no Major";
+};
