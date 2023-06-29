@@ -1,0 +1,24 @@
+var remove3rdlastElem = function (head) {
+  let temp = head;
+  let len = 0;
+
+  while (temp) {
+    len++;
+    temp = temp.next;
+  }
+  let removedEl = len - 3;
+
+  temp = head;
+  let back = null;
+  let count = 0;
+
+  while (temp) {
+    if (count === removedEl) {
+      back.next = temp.next;
+      break;
+    }
+    count++;
+    back = temp;
+    temp = temp.next;
+  }
+};
