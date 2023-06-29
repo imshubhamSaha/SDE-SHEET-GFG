@@ -1,0 +1,11 @@
+var maximum = function (arr) {
+  let maxi = -Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    arr[i].sort((a, b) => b - a);
+
+    maxi = Math.max(arr[i][0], maxi);
+  }
+
+  return maxi;
+};
