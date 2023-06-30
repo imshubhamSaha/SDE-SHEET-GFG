@@ -1,0 +1,52 @@
+/**
+ * @param {Node} node
+ * @param {number} data
+ * @return {Node} node
+*/
+
+
+/*
+class Node{
+    constructor(data){
+        this.data = data;
+        this.next = null;
+    }
+}
+
+let head;
+This is method only submission.
+You only need to complete the below method.
+*/
+
+class Solution {
+    sortedInsert(node, data)
+    {
+        const newData = new Node(data)
+        
+        let temp = node;
+        let back = null;
+        if(temp.data >data) {
+            newData.next = temp
+            return newData
+        }
+        
+        while(temp) {
+            if(temp.data> data) {
+                break;
+            }
+            back = temp;
+            temp = temp.next
+        }
+        
+        if(back == null) {
+            newData.next = node
+           
+        }else {
+            back.next = newData;
+            newData.next = temp;
+           
+        }  
+        
+         return node
+    }
+}
