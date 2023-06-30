@@ -1,0 +1,23 @@
+
+//User function Template for javascript
+
+
+
+/**
+ * @param {Stack} s
+ * @param {number} sizeOfStack
+*/
+class Solution 
+{
+    //Function to delete middle element of a stack.
+    deleteMid(s, sizeOfStack)
+    {
+        const half = Math.floor((sizeOfStack+1)/2)
+       
+        for(let i=half-1; i<sizeOfStack-1; i++) {
+            s["a"][i] = s["a"][i+1];
+           
+        }
+        s["a"].pop()
+    }
+}
