@@ -1,0 +1,38 @@
+class Solution
+{
+    
+    /**
+     * @param {number} arr
+     * @param {number} n
+     * @returns {Stack}
+    */
+    //Function to push all the elements into the stack.
+    _push(arr, n)
+    {
+        this.min = Infinity;
+        this.stack = [];
+        
+        for(let i=0; i<n; i++) {
+            this.min = Math.min(this.min, arr[i]);
+            this.stack.push(this.min)
+        }
+        
+        return this.stack;
+    }
+    
+    /**
+     * @param {Stack} s
+    */
+    //Function to print minimum value in stack each time while popping.
+    _getMinAtPop(s)
+    {
+        let str = ""
+       while(this.stack.length > 0) {
+           
+           str += this.stack[this.stack.length-1] + " "
+           this.stack.pop()
+       }
+       console.log(str)
+    }
+    
+}
