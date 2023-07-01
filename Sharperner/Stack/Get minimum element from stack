@@ -1,0 +1,55 @@
+//User function Template for javascript
+
+class MyStack {
+  constructor() {
+    this.stack = [];
+    this.minStack = [];
+    this.topPos = -1;
+  }
+  
+  /**
+   * @param {number} x
+   */
+  
+  /* The method push to push element into the stack */
+  push(x) {
+        if(this.topPos === -1) this.minStack[this.topPos + 1] = x
+        else{
+            let min = Math.min(x, this.minStack[this.topPos]);
+            this.minStack[this.topPos +1] = min;
+        }
+        
+        this.stack[this.topPos+1] = x;
+        this.topPos = this.topPos +1;
+  }
+
+  /**
+   * @returns {number}
+   */
+  
+  /*The method pop which return the element poped out of the stack*/
+  pop() {
+    if(this.topPos === -1) {
+        return -1
+    }else{
+        let p = this.stack.pop();
+        this.minStack.pop();
+        this.topPos= this.topPos -1;
+        return p;
+    }
+  }
+  //[2,1]
+  //[2,]
+  /**
+   * @returns {number}
+   */
+   
+  /*The method getMin() which return the minimum element of the stack*/
+  getMin() {
+    if(this.topPos === -1) {
+        return -1;
+    }else{
+        return this.minStack[this.topPos]
+    }    
+  }
+}
