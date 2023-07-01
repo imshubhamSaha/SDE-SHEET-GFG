@@ -1,0 +1,50 @@
+//User function Template for javascript
+
+class Queue {
+  constructor(){
+      this.s1 = []
+      this.s2 = []
+      this.front =-1
+      this.rear = -1
+  }
+
+/**
+ * @param {number} x
+ */
+  enqueue(x){
+      //code here
+      if(this.front==-1 && this.rear == -1) {
+          this.front++
+          this.rear++
+      }else{
+          this.rear++
+      }
+      
+      this.s1[this.rear] = x;
+      
+  }
+
+/**
+ * @return {number}
+ */
+  dequeue(){
+      //code here
+      if(this.s2.length === 0) {
+          if(this.rear === -1) {
+              return -1;
+          }
+          let i = this.front
+          while(this.rear >=this.front) {
+              this.s2[i] = this.s1[this.rear];
+                i++
+              this.rear--
+          }
+          this.front = -1;
+          this.rear = -1;
+      }
+      
+      return this.s2.pop()
+      
+      
+  }
+}
