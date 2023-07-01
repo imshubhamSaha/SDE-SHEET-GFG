@@ -1,0 +1,51 @@
+
+class QueueStack{
+    constructor(){
+        this.q1 = new Queue();  
+        this.q2 = new Queue();  
+    }
+    
+    /**
+     * @param {number} x
+    */
+    
+    //Function to push an element into stack using two queues.
+    push(x){
+    
+        if(this.q1.empty()) {
+            this.q1.push(x);
+            
+            while(!this.q2.empty()) {
+                let p = this.q2.pop();
+                this.q1.push(p)
+            }
+        }else{
+            this.q2.push(x);
+            while(!this.q1.empty()){
+                let p = this.q1.pop();
+                this.q2.push(p)
+            }
+        }   
+        
+    }
+    
+    /**
+     * @returns {number}
+    */
+    
+    //Function to pop an element from stack using two queues. 
+    pop(){
+        // code here
+        if(this.q2.empty() && this.q1.empty()){
+           
+                return -1;
+        }
+        if(!this.q1.empty()){    
+            return this.q1.pop()
+        }else{
+            return this.q2.pop()
+        }
+        
+       
+    }
+}
