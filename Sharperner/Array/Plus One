@@ -1,0 +1,26 @@
+/**
+ * @param {Number[]} arr
+ * @param {Number} n
+ * @returns {Number[]}
+ */
+
+class Solution {
+    increment(arr,n){
+        let str = ""
+        let carry = 1;
+        let i = n-1
+        while(i>=0 || carry !== 0) {
+            let el = i>=0 ? arr[i] : 0
+            let sum = el + carry;
+            str = (sum%10) + str;
+            carry = Math.floor(sum/10);
+            i--;
+        }
+        
+        for(let i=0; i<str.length; i++) {
+            arr[i] = str[i]
+        }
+        
+        return str;
+    }
+}
