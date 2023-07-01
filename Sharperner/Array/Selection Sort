@@ -1,0 +1,34 @@
+/**
+ *
+ * select
+ * @param {number[]} arr
+ * @param {number} i
+ * @return {number}
+ *
+ * selectionSort
+ * @param {number[]} arr
+ * @param {number} n
+ */
+class Solution
+{
+  select(arr,i){
+     // code here such that selectionSort() sorts arr[]
+  }
+
+  //Function to sort the array using selection sort algorithm.
+  selectionSort(arr,n){
+    for(let i=0; i<n-1; i++) {
+        let minIdx = i;
+        for(let j =i+1; j<n; j++) {
+            if(arr[j] < arr[minIdx]) {
+                minIdx = j
+            }
+        }
+        
+        let temp = arr[minIdx]
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }
+  }
+    
+}
