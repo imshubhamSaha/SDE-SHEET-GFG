@@ -1,0 +1,28 @@
+class Solution {
+    rotate(arr){ 
+       let top = 0;
+       let left = 0;
+       let right = arr[0].length-1
+       let bottom = arr.length-1
+       
+       while(top <=bottom) {
+           for(let i=0; i<(right-top); i++) {
+               let temp = arr[top][left+i]
+               arr[top][left+i] = arr[bottom-i][left]
+               arr[bottom-i][left] = temp;
+               temp = arr[top+i][right] 
+               arr[top+i][right] = arr[bottom][right-i];
+               arr[bottom][right-i] = temp;
+               temp = arr[top][left+i] 
+               arr[top][left+i] = arr[bottom][right-i];
+               arr[bottom][right-i] = temp
+           }
+           
+           top++;
+           left++
+           bottom--;
+           right--;
+       }
+    }
+    
+}
